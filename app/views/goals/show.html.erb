@@ -1,0 +1,22 @@
+<%= @goal.content %>
+<%= @goal.status == 'yes' ? 'Completed' : 'Not complete' %>
+<%= button_to 'Remove Goal', goal_url(@goal), method: :delete %>
+
+<h2>Comments</h2>
+
+<% @goal.comments.each do |comment| %>
+<%= comment.content %>
+<% end %>
+
+<h3>Add Comment</h3>
+
+<form id="goal_comment" action="<%= goal_comments_url %>" method="post">
+  Content:
+  <input type="text" name="comment[content]" id='content' value="">
+
+  <input type="submit" name="Submit Comment" value="Submit Comment">
+
+  <%= render 'layouts/token' %>
+  <input type="hidden" name="comment[goal_id]" value="<%= @goal.id %>">
+
+</form>

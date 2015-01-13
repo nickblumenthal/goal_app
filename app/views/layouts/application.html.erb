@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GoalsApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if logged_in? %>
+  <%= current_user.username %>
+  <%= button_to "Sign Out", session_url, :method => :delete %>
+<% else %>
+  <%= button_to "Sign In", new_session_url, :method => :get %>
+  <%= button_to "Sign Up", new_session_url, :method => :get %>
+<% end %>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <div><%= error %></div>
+  <% end %>
+<% end %>
+<%= yield %>
+
+</body>
+</html>

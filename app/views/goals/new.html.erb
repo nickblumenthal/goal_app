@@ -1,0 +1,15 @@
+<h2>New Goal</h2>
+
+<form action="<%= goals_url %>" method="post">
+  Content:
+  <input type="text" name="goal[content]" id="content" value="">
+  <input type="radio" name="goal[visibility]" id='private' value="private">Private
+  <input type="radio" name="goal[visibility]" id='public' value="public">Public
+
+  <input type="radio" name="goal[status]" id='yes' value="yes">Completed
+  <input type="radio" name="goal[status]" id='no' value="no">Not Completed
+
+  <input type="submit" name="add_goal" value="Add Goal">
+
+  <%= render 'layouts/token' %>
+</form>

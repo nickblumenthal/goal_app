@@ -1,0 +1,13 @@
+<h2>Edit Goal</h2>
+
+<form action="<%= goal_url(@goal) %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  Content:
+  <input type="text" name="goal[content]" id="content" value="<%= @goal.content %>">
+  <input type="radio" name="goal[visibility]" id='private' value="private" <%= "checked" if @goal.visibility == "private" %>> Private
+  <input type="radio" name="goal[visibility]" id='public' value="public" <%= "checked" if @goal.visibility == "public" %>> Public
+
+  <input type="submit" name="add_goal" value="Add Goal">
+
+  <%= render 'layouts/token' %>
+</form>
