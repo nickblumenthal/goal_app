@@ -6,12 +6,7 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  has_many(
-    :comments,
-    class_name: :UserComment,
-    foreign_key: :user_id,
-    primary_key: :id
-  )
+  include Commentable
 
   def password=(password)
     @password = password
